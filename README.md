@@ -43,11 +43,12 @@ As some features are not installed by default in various images with many softwa
 Below is the image.
 
 ![01](Screenshots/T1.png)
+![abc](Screenshots/Mail.png)
 
 Building of image cmd used was 
-`docker build -t jenkinsos1:v4`
+	`docker build -t jenkinsos1:v4`
 While running a container command used was
-`docker run -it --name os1 -p 8082:8080 -v /:/host jenkinsos:v4`
+	`docker run -it --name os1 -p 8082:8080 -v /:/host jenkinsos:v4`
 
 ![02](Screenshots/T2.png)
 ![03](Screenshots/T3.png)
@@ -63,14 +64,14 @@ This is one-time for a particular container until its not removed from the local
 
 ## Job 1: 
 **Q) Pull the GitHub repo automatically when some developers push the repo to GitHub.**
-**A)** So basically what is done here is that the files are copied from github repository to the localhost in some local repository.
+A) So basically what is done here is that the files are copied from github repository to the localhost in some local repository.
 Configuration image below.
 
 ![04](Screenshots/T4.png)
 
 ## Job 2:
-** By looking at the code or program file, Jenkins should automatically start the respective language interpreter install image container to deploy code ( eg. If code is of PHP, then Jenkins should start the container that has PHP already installed ).**
-**A)** Basically what I did here that I used basic linux commands like `ls, grep, |` to decide from the file extension and launch containers accordingly for deploying it over the container with alloting specific port no. Similarly other extensions can be tried, with pulling a docker image too at the runtime.
+**Q) By looking at the code or program file, Jenkins should automatically start the respective language interpreter install image container to deploy code ( eg. If code is of PHP, then Jenkins should start the container that has PHP already installed ).**
+A) Basically what I did here that I used basic linux commands like `ls, grep, |` to decide from the file extension and launch containers accordingly for deploying it over the container with alloting specific port no. Similarly other extensions can be tried, with pulling a docker image too at the runtime.
 Configuration image below.
 
 ![05](Screenshots/T5.png)
@@ -90,14 +91,14 @@ Configuration image below.
 
 ## Job 4:
 **Q) If the app is not working, then send an email to the developer with error messages.**
-**A)** So the pre configured `mail.py` is run with python3 and sends Test Status message only if Job 3 failed otherwise it won't execute.
+A) So the pre configured `mail.py` is run with python3 and sends Test Status message only if Job 3 failed otherwise it won't execute.
 Configuration image below.
 
 ![08](Screenshots/T7.png)
 
 ## Job 5:
 **Q) If the container where the app is running fails due to any reason then this job should automatically start the container again.**
-**A)** For this monitoring job, I set a condition command to grep the running container if it doesn't find it then it will create the image. So to do that I used build periodically trigger for every minute to check the status of the container.
+A) For this monitoring job, I set a condition command to grep the running container if it doesn't find it then it will create the image. So to do that I used build periodically trigger for every minute to check the status of the container.
 Configuration image below.
 
 ![09](Screenshots/T8.png)

@@ -48,7 +48,8 @@ Below is the image.
 Building of image cmd used was 
 	`docker build -t jenkinsos1:v4`
 While running a container command used was
-	`docker run -it --name os1 -p 8082:8080 -v /:/host jenkinsos:v4`
+	`docker run -it --name os1 -p 8082:8080 --privileged -v /:/host jenkinsos:v4`
+Here privileged was used so that docker can easily use command like chroot and access the root directory of the VM it is running on. It provides special privileges.
 
 ![02](Screenshots/T2.png)
 ![03](Screenshots/T3.png)
